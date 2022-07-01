@@ -2,4 +2,4 @@
 
 ## A `djangoboys` tutorial `with lots of extensions` 🚀🚀🚀
 
-#### Made with ❤️ by @edchelstephens
+### Made with ❤️ by @edchelstephens

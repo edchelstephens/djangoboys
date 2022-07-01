@@ -1,5 +1,5 @@
-# Django Boys
+# Django Boys from [djangogirls](https://tutorial.djangogirls.org/)
 
-## A `djangoboys` tutorial from [djangogirls](https://tutorial.djangogirls.org/) `with lots of extensions` 🚀🚀🚀
+## A `djangoboys` tutorial `with lots of extensions` 🚀🚀🚀
 
 #### Made with ❤️ by @edchelstephens

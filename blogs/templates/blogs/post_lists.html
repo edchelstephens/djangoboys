@@ -10,10 +10,12 @@
     <header>
       <h1><a href="/">Django Boys Blog</a></h1>
     </header>
+    {% for post in posts %}
     <article>
-      <time>published: 2.07.2022, 9:10</time>
-      <h2><a href="">First Post</a></h2>
-      <p>lorem</p>
+      <time>published: {{ post.published_at}}</time>
+      <h2><a href="">{{ post.title }}</a></h2>
+      <p>{{ post.text }}</p>
     </article>
+    {% endfor %}
   </body>
 </html>

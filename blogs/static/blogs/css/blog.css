@@ -59,7 +59,7 @@ h4 {
 
 .post h2 a,
 .post h2 a:visited {
-    color: #000000;
+    color: #44B78B !important;
 }
 
 .post>.date,
@@ -79,6 +79,6 @@ h4 {
     background-color: #44B78B;
 }
 
-.post-title a{
-    color: #44B78B !important
+.post-title {
+    color: #44B78B
 }

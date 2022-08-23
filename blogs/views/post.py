@@ -1,7 +1,7 @@
 from django.utils import timezone
 from django.db.models import QuerySet
 from django.views.generic import TemplateView, DetailView, View
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from blogs.models.post import Post
 from blogs.forms.post import PostForm
@@ -32,10 +32,35 @@ class PostView(View):
 
     def get(self, request, *args, **kwargs):
         form = PostForm()
-        return render(request, "blogs/post_edit.html", {"form": form})
+        return render(
+            request, template_name="blogs/post_edit.html", context={"form": form}
+        )
 
     def post(self, request, *args, **kwargs):
         form = PostForm(request.POST)
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_at = timezone.now()
+            post.save()
+
+            return redirect("blogs:post_detail", pk=post.pk)
+
+
+class PostEditView(View):
+    """Post edit view."""
+
+    def get(self, request, pk: int, *args, **kwargs):
+        post = get_object_or_404(Post, pk=pk)
+        form = PostForm(instance=post)
+        return render(
+            request, template_name="blogs/post_edit.html", context={"form": form}
+        )
+
+    def post(self, request, pk: int, *args, **kwargs):
+        post = get_object_or_404(Post, pk=pk)
+        form = PostForm(request.POST, instance=post)
 
         if form.is_valid():
             post = form.save(commit=False)

@@ -1,8 +1,12 @@
-from django.views.generic import TemplateView, DetailView
 from django.utils import timezone
 from django.db.models import QuerySet
+from django.views.generic import TemplateView, DetailView, View
+from django.shortcuts import render, redirect
 
 from blogs.models.post import Post
+from blogs.forms.post import PostForm
+
+from utils.debug import terminal_debug_logger
 
 
 class PostListTemplateView(TemplateView):
@@ -15,6 +19,8 @@ class PostListTemplateView(TemplateView):
         posts = Post.objects.filter(published_at__lte=timezone.now()).order_by(
             "published_at"
         )
+        terminal_debug_logger.pprint_data(posts, "posts")
+
         return posts
 
     def get_context_data(self, **kwargs) -> dict:
@@ -22,6 +28,25 @@ class PostListTemplateView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["posts"] = self.get_posts()
         return context
+
+
+class PostView(View):
+    """Post view."""
+
+    def get(self, request, *args, **kwargs):
+        form = PostForm()
+        return render(request, "blogs/post_edit.html", {"form": form})
+
+    def post(self, request, *args, **kwargs):
+        form = PostForm(request.POST)
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+
+            return redirect("blogs:post_detail", pk=post.pk)
 
 
 class PostDetailView(DetailView):

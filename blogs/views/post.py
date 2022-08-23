@@ -6,8 +6,6 @@ from django.shortcuts import render, redirect
 from blogs.models.post import Post
 from blogs.forms.post import PostForm
 
-from utils.debug import terminal_debug_logger
-
 
 class PostListTemplateView(TemplateView):
     """Post lists template view."""
@@ -19,7 +17,6 @@ class PostListTemplateView(TemplateView):
         posts = Post.objects.filter(published_at__lte=timezone.now()).order_by(
             "published_at"
         )
-        terminal_debug_logger.pprint_data(posts, "posts")
 
         return posts
 
@@ -43,7 +40,7 @@ class PostView(View):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published_date = timezone.now()
+            post.published_at = timezone.now()
             post.save()
 
             return redirect("blogs:post_detail", pk=post.pk)

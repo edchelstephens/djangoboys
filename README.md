@@ -2,4 +2,6 @@
 
 ## A `djangoboys` tutorial `with lots of extensions`!!! 🚀🚀🚀
 
+![Djangoboys](assets/images/logo.png)
+
 ### Made with ❤️ by @edchelstephens

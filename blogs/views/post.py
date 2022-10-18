@@ -27,6 +27,24 @@ class PostListTemplateView(TemplateView):
         return context
 
 
+class PostDrafListView(TemplateView):
+    """Draf post lists template view."""
+
+    template_name = "blogs/post_draft_lists.html"
+
+    def get_posts(self) -> QuerySet:
+        """Get unpublished posts up to this point."""
+        posts = Post.objects.filter(published_at__isnull=True).order_by("created_at")
+
+        return posts
+
+    def get_context_data(self, **kwargs) -> dict:
+        """Get context to be rendered on template."""
+        context = super().get_context_data(**kwargs)
+        context["posts"] = self.get_posts()
+        return context
+
+
 class PostView(View):
     """Post view."""
 
@@ -42,7 +60,6 @@ class PostView(View):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published_at = timezone.now()
             post.save()
 
             return redirect("blogs:post_detail", pk=post.pk)
@@ -65,7 +82,6 @@ class PostEditView(View):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published_at = timezone.now()
             post.save()
 
             return redirect("blogs:post_detail", pk=post.pk)

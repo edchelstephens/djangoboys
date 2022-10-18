@@ -36,6 +36,8 @@
         <a href="{% url 'blogs:post_new'%}" class="top-menu">
           {% include 'blogs/icons/file-earmark-plus.svg' %}
         </a>
+        <a href="{% url 'blogs:post_draft_list' %}" class="top-menu">
+          {% include 'blogs/icons/pencil-fill.svg' %}</a>
         {% endif %}
         <h1>
           <a href="/">Django Boys Blog</a>

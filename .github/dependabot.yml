@@ -5,7 +5,15 @@
 
 version: 2
 updates:
-  - package-ecosystem: "pip" # See documentation for possible values
-    directory: "requirements/" # Location of package manifests
+  # Maintain dependencies for Python pip
+  - package-ecosystem: "pip" 
+    directory: "requirements/" # Location of pip requirements files
     schedule:
-      interval: "daily"
+      interval: "weekly"
+      
+  # Maintain dependencies for Github Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+

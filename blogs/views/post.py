@@ -1,10 +1,10 @@
-from django.utils import timezone
 from django.db.models import QuerySet
-from django.views.generic import TemplateView, DetailView, View
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
+from django.views.generic import DetailView, TemplateView, View
 
-from blogs.models.post import Post
 from blogs.forms.post import PostForm
+from blogs.models.post import Post
 
 
 class PostListTemplateView(TemplateView):

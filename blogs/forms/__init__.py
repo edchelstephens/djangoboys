@@ -1,1 +1,1 @@
-from blogs.forms.post import PostForm
+from blogs.forms.post import PostForm  # noqa

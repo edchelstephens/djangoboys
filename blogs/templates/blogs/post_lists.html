@@ -1,5 +1,5 @@
-{% extends "blogs/base.html" %} 
-{% block content %} 
+{% extends "blogs/base.html" %}
+{% block content %}
   {% for post in posts %}
   <article class="post">
     <time class="date">published: {{ post.published_at}}</time>
@@ -8,5 +8,5 @@
     </h2>
     <p class="post-text">{{ post.text | linebreaksbr }}</p>
   </article>
-  {% endfor %} 
+  {% endfor %}
 {% endblock content %}

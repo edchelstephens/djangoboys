@@ -1,13 +1,12 @@
-import sys
 import os
-import pytz
-
+import sys
 from datetime import tzinfo
 from types import CodeType
 
+import pytz
 from django.conf import settings
-from django.utils.termcolors import colorize
 from django.utils import timezone
+from django.utils.termcolors import colorize
 
 from utils.logging import TerminalLoggingMixin
 
@@ -33,7 +32,7 @@ class DebuggerMixin(TerminalLoggingMixin):
             print("Timestamp:", self.make_bold(timestamp, fg=color))
             print("Exception:", self.make_bold(str(exception_object), fg=color))
             print("Type:", self.make_bold(exception_type.__name__, fg=color))
-            print("Caller:", self.make_bold(text="{}()".format(caller), fg=color))
+            print("Caller:", self.make_bold(text=f"{caller}()", fg=color))
             print("Location:", self.make_bold(location, fg=color))
             print("Line:", self.make_bold(line_number, fg=color))
             self.pprint_symbols(symbol_repetition=42 + len(label), color="red")
@@ -72,7 +71,7 @@ class DebuggerMixin(TerminalLoggingMixin):
         caller = code
         instance_name = self.__class__.__name__
         if instance_name != "DebuggerMixin":
-            caller = "{}.{}".format(instance_name, code)
+            caller = f"{instance_name}.{code}"
 
         return caller
 
@@ -99,7 +98,7 @@ class DebuggerMixin(TerminalLoggingMixin):
         """Check if print debug in PH time."""
         try:
             return os.environ.get("DEBUG_TIMEZONE_PH") == "True"
-        except Exception as exc:
+        except Exception:
             return False
 
     def get_debug_timezone(self) -> tzinfo:

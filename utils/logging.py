@@ -2,13 +2,21 @@
 
 Uses django's termcolors.
 
-Available colors: 
+Available colors:
 
-    color_names = ('black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white')
+    color_names =
+        'black',
+        'red',
+        'green',
+        'yellow',
+        'blue',
+        'magenta',
+        'cyan', 'white'
+
 """
 
 from pprint import pprint
-from typing import Any, Optional
+from typing import Any
 
 from django.utils.termcolors import colorize
 
@@ -27,7 +35,12 @@ class TerminalLoggingMixin:
         )
 
     def pprint_label(
-        self, label="Data", symbol="=", symbol_repetition=20, fg="green", bg="black"
+        self,
+        label="Data",
+        symbol="=",
+        symbol_repetition=20,
+        fg="green",
+        bg="black",
     ) -> None:
         """Prints label string, surrounded by repeated symbols, colorized."""
         symboled_label = "{} {} {}".format(
@@ -63,7 +76,7 @@ class TerminalLoggingMixin:
         try:
             self.pprint_data(dir(data), label=label, fg=fg, bg=bg)
         except Exception:
-            self.pprint_label("{} has no .__dir__ attribute".format(data))
+            self.pprint_label(f"{data} has no .__dir__ attribute")
 
     def pprint_dict(
         self, data: Any, label="data.__dict__", fg="cyan", bg="black"
@@ -72,7 +85,7 @@ class TerminalLoggingMixin:
         try:
             self.pprint_data(data.__dict__, label=label, fg=fg, bg=bg)
         except Exception:
-            self.pprint_label(label="{} has no .__dict__ attribute".format(data), bg=bg)
+            self.pprint_label(label=f"{data} has no .__dict__ attribute", bg=bg)
 
     def pprint_breakpoint(self, label="BREAK POINT", symbol="*") -> None:
         """Print a break point line."""
@@ -81,7 +94,7 @@ class TerminalLoggingMixin:
         print()
 
     def pprint_locals(
-        self, local_vars: dict, label: Optional[str] = "Local Variables"
+        self, local_vars: dict, label: str | None = "Local Variables"
     ) -> None:
         """Pretty print local variables `local_vars` from locals() returned dictionary.
 

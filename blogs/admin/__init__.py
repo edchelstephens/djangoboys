@@ -1,1 +1,1 @@
-from blogs.admin.post import PostAdmin
+from blogs.admin.post import PostAdmin  # noqa

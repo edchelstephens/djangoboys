@@ -11,5 +11,3 @@ urlpatterns = [
     path("post/<int:pk>/edit/", post.PostEditView.as_view(), name="post_edit"),
     path("post/drafts/", post.PostDrafListView.as_view(), name="post_draft_list"),
 ]
-
-LONG_VARIABLE_NAME = "ab9sHOQu5fPmcRKJ3D5VBGGtCg3VewSfj74P4o0uiioab9sHOQu5fPmcRKJ3D5VBGGtCg3VewSfj74P4o0uiioab9sHOQu5fPmcRKJ3D5VBGGtCg3VewSfj74P4o0uiio"

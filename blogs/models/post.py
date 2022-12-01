@@ -27,3 +27,7 @@ class Post(models.Model):
         """Publish the post."""
         self.published_at = timezone.now()
         self.save()
+
+    def is_published(self) -> bool:
+        """Check if post is published by checking the published_at datetime field."""
+        return self.published_at is not None

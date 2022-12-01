@@ -5,6 +5,7 @@ from django.views.generic import DetailView, TemplateView, View
 
 from blogs.forms.post import PostForm
 from blogs.models.post import Post
+from utils.debug import DebuggerMixin
 
 
 class PostListTemplateView(TemplateView):
@@ -65,6 +66,15 @@ class PostView(View):
             return redirect("blogs:post_detail", pk=post.pk)
 
 
+class PostDeleteView(DebuggerMixin, View):
+    """Post delete view."""
+
+    def get(self, request, pk: int, *args, **kwargs):
+        post = get_object_or_404(Post, pk=pk)
+        post.delete()
+        return redirect("blogs:post_list")
+
+
 class PostEditView(View):
     """Post edit view."""
 
@@ -92,3 +102,12 @@ class PostDetailView(DetailView):
 
     template_name = "blogs/post_detail.html"
     model = Post
+
+
+class PostPublishView(View):
+    """Post publish view."""
+
+    def get(self, request, pk: int, *args, **kwargs):
+        post = get_object_or_404(Post, pk=pk)
+        post.publish()
+        return redirect("blogs:post_detail", pk=pk)

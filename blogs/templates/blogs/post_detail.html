@@ -5,11 +5,17 @@
       {% if  post.is_published %}
         <time class="date">{{post.published_at}}</time>
       {% else%}
-        <a class="btn btn-secondary" href="{% url 'blogs:post_edit' pk=post.pk %}">Publish</a>
+        <a class="btn btn-secondary" href="{% url 'blogs:post_publish' pk=post.pk %}">Publish</a>
       {% endif%}
-    <a class="btn btn-secondary" href="{% url 'blogs:post_edit' pk=post.pk %}">
-      {% include 'blogs/icons/pencil-fill.svg' %}
-    </a>
+      <a class="btn btn-secondary" href="{% url 'blogs:post_edit' pk=post.pk %}">
+        {% include 'blogs/icons/pencil-fill.svg' %}
+      </a>
+      {% if user == post.author %}
+        <a class="btn btn-danger" href="{% url 'blogs:post_delete' pk=post.pk %}">
+          Remove
+        </a>
+      {% endif %}
+
     {% endif %}
   </aside>
   <h2 class="post-title">{{post.title }}</h2>

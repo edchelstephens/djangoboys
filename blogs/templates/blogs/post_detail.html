@@ -1,25 +1,38 @@
-{% extends "blogs/base.html" %} {% block content %}
-<article class="post">
-  <aside class="actions">
-    {% if user.is_authenticated %}
-      {% if  post.is_published %}
-        <time class="date">{{post.published_at}}</time>
-      {% else%}
-        <a class="btn btn-secondary" href="{% url 'blogs:post_publish' pk=post.pk %}">Publish</a>
-      {% endif%}
-      <a class="btn btn-secondary" href="{% url 'blogs:post_edit' pk=post.pk %}">
-        {% include 'blogs/icons/pencil-fill.svg' %}
-      </a>
-      {% if user == post.author %}
-        <a class="btn btn-danger" href="{% url 'blogs:post_delete' pk=post.pk %}">
-          Remove
-        </a>
-      {% endif %}
+{% extends "blogs/base.html" %}
+  {% block content %}
+    <article class="post">
+      <aside class="actions">
+        {% if user.is_authenticated %}
+          {% if  post.is_published %}
+            <time class="date">{{post.published_at}}</time>
+          {% else%}
+            <a class="btn btn-secondary" href="{% url 'blogs:post_publish' pk=post.pk %}">Publish</a>
+          {% endif%}
+          <a class="btn btn-secondary" href="{% url 'blogs:post_edit' pk=post.pk %}">
+            {% include 'blogs/icons/pencil-fill.svg' %}
+          </a>
+          {% if user == post.author %}
+            <a class="btn btn-danger" href="{% url 'blogs:post_delete' pk=post.pk %}">
+              Remove
+            </a>
+          {% endif %}
 
+        {% endif %}
+      </aside>
+      <h2 class="post-title">{{post.title }}</h2>
+      <p class="post-text">{{post.text|linebreaksbr}}</p>
+    </article>
+
+    <hr>
+    {% if post.comments.all %}
+      {% for comment in post.comments.all %}
+        <div class="comment">
+            <div class="date">{{comment.created_at}}</div>
+            <strong> {{ comment.author }} </strong>
+            <p>{{comment.text|linebreaks}}</p>
+        </div>
+      {% endfor %}
+    {% else %}
+        <p>No comments yet</p>
     {% endif %}
-  </aside>
-  <h2 class="post-title">{{post.title }}</h2>
-  <p class="post-text">{{post.text|linebreaksbr}}</p>
-</article>
-
-{% endblock content %}
+  {% endblock content %}

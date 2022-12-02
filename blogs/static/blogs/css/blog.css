@@ -1,7 +1,8 @@
-.dark-background{
+.dark-background {
     background-color: #0C4B33;
 }
-.light-background{
+
+.light-background {
     background-color: #44B78B;
 }
 
@@ -81,4 +82,8 @@ h4 {
 
 .post-title {
     color: #44B78B
+}
+
+.comment {
+    margin: 20px 0px 20px 20px;
 }

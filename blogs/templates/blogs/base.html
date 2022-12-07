@@ -35,10 +35,10 @@
       <div class="container">
         {% if user.is_authenticated %}
           <a href="{% url 'blogs:post_new'%}" class="top-menu">
-            {% include 'blogs/icons/file-earmark-plus.svg' %}
+            <span class="fa fa-add"></span>
           </a>
           <a href="{% url 'blogs:post_draft_list' %}" class="top-menu">
-            {% include 'blogs/icons/pencil-fill.svg' %}</a>
+            <span class="fa fa-edit"></span>
         {% else %}
           <a href="{% url 'login' %}" class="top-menu">
             <span class="fa fa-lock"></span>

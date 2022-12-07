@@ -9,11 +9,11 @@
             <a class="btn btn-secondary" href="{% url 'blogs:post_publish' pk=post.pk %}">Publish</a>
           {% endif%}
           <a class="btn btn-secondary" href="{% url 'blogs:post_edit' pk=post.pk %}">
-            {% include 'blogs/icons/pencil-fill.svg' %}
+            <span class="fa fa-edit"></span>
           </a>
           {% if user == post.author %}
             <a class="btn btn-danger" href="{% url 'blogs:post_delete' pk=post.pk %}">
-              Remove
+              <span class="fa fa-trash"></span>
             </a>
           {% endif %}
 

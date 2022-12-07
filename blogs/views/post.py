@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import QuerySet
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
@@ -5,7 +6,6 @@ from django.views.generic import DetailView, TemplateView, View
 
 from blogs.forms.post import PostForm
 from blogs.models.post import Post
-from utils.debug import DebuggerMixin
 
 
 class PostListTemplateView(TemplateView):
@@ -28,7 +28,7 @@ class PostListTemplateView(TemplateView):
         return context
 
 
-class PostDrafListView(TemplateView):
+class PostDrafListView(LoginRequiredMixin, TemplateView):
     """Draf post lists template view."""
 
     template_name = "blogs/post_draft_lists.html"
@@ -46,7 +46,7 @@ class PostDrafListView(TemplateView):
         return context
 
 
-class PostView(View):
+class PostView(LoginRequiredMixin, View):
     """Post view."""
 
     def get(self, request, *args, **kwargs):
@@ -66,7 +66,7 @@ class PostView(View):
             return redirect("blogs:post_detail", pk=post.pk)
 
 
-class PostDeleteView(DebuggerMixin, View):
+class PostDeleteView(LoginRequiredMixin, View):
     """Post delete view."""
 
     def get(self, request, pk: int, *args, **kwargs):
@@ -75,7 +75,7 @@ class PostDeleteView(DebuggerMixin, View):
         return redirect("blogs:post_list")
 
 
-class PostEditView(View):
+class PostEditView(LoginRequiredMixin, View):
     """Post edit view."""
 
     def get(self, request, pk: int, *args, **kwargs):
@@ -104,7 +104,7 @@ class PostDetailView(DetailView):
     model = Post
 
 
-class PostPublishView(View):
+class PostPublishView(LoginRequiredMixin, View):
     """Post publish view."""
 
     def get(self, request, pk: int, *args, **kwargs):

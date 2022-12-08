@@ -1,4 +1,5 @@
 -r ./base.txt
+-r ./test.txt
 
 django-extensions==3.2.1 # https://pypi.org/project/django-extensions/
 

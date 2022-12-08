@@ -1,1 +1,1 @@
-from tests.users.factories import UserFactory  # noqa
+from tests.users.factories.user import UserFactory  # noqa

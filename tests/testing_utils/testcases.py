@@ -42,7 +42,7 @@ class TestAssertionsMixin(StringToHTMLParserMixin):
 
         assert lists_equal, msg
 
-    def assertIdInRecords(self, id: int, records: list[dict]) -> None:
+    def assertIdInRecords(self, id: int, records: list) -> None:
         """Assert that id is in one of records dict in records list."""
 
         id_in_records = any([id == record.get("id") for record in records])
@@ -50,7 +50,7 @@ class TestAssertionsMixin(StringToHTMLParserMixin):
 
         assert id_in_records, msg
 
-    def assertIdNotInRecords(self, id: int, records: list[dict]) -> None:
+    def assertIdNotInRecords(self, id: int, records: list) -> None:
         """Assert that id is not in one of records dict in records list."""
 
         id_in_records = any([id == record.get("id") for record in records])

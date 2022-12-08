@@ -22,9 +22,7 @@ from utils.debug import DebuggerMixin
 class TestAssertionsMixin(StringToHTMLParserMixin):
     """Mixins for custom test assertions."""
 
-    def assertListsAreEqual(
-        self, first: list, second: list, msg: str | None = None
-    ) -> None:
+    def assertListsAreEqual(self, first: list, second: list, msg: str = None) -> None:
         """Assert that first and second lists are equal."""
 
         list_from_first_side_equal = all(
@@ -181,7 +179,7 @@ class QuerySetTestMixin:
     """Mixin for query set tests."""
 
     def assertQuerySetEqualByIds(
-        self, first: QuerySet, second: QuerySet, msg: str | None = None
+        self, first: QuerySet, second: QuerySet, msg: str = None
     ) -> None:
         """Assert query sets are equal by using id checks."""
         first_queryset_ids = list(first.values_list("id", flat=True))
@@ -194,7 +192,7 @@ class QuerySetTestMixin:
         assert first_queryset_ids == second_queryset_ids, msg
 
     def assertQuerySetIsIn(
-        self, first: QuerySet, second: QuerySet, msg: str | None = None
+        self, first: QuerySet, second: QuerySet, msg: str = None
     ) -> None:
         """Assert first query sets is a subset of second queryset."""
         first_queryset_ids = list(first.values_list("id", flat=True))

@@ -64,7 +64,10 @@ class TerminalLoggingMixin:
     def pprint_exception(
         self, exception: Exception, label="Exception", fg="red", bg="black"
     ) -> None:
-        """Pretty print exception string, a shorthand for pprint_data(data=str(exception), label='Exception')"""
+        """Pretty print exception string.
+
+        A shorthand for pprint_data(data=str(exception), label='Exception').
+        """
         self.pprint_data(data=str(exception), label=label, fg=fg, bg=bg)
 
     def pprint_type(self, data: Any, label="Type", fg="magenta", bg="black") -> None:
@@ -93,9 +96,7 @@ class TerminalLoggingMixin:
         self.pprint_label(label, symbol=symbol, symbol_repetition=30, bg="red")
         print()
 
-    def pprint_locals(
-        self, local_vars: dict, label: str | None = "Local Variables"
-    ) -> None:
+    def pprint_locals(self, local_vars: dict, label: str = "Local Variables") -> None:
         """Pretty print local variables `local_vars` from locals() returned dictionary.
 
         Sample invocation:

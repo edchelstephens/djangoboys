@@ -20,7 +20,7 @@ class SessionTestMixin:
 
         assert self.is_session_empty(request), msg
 
-    def assertSessionNotEmpty(self, request, msg: str | None = None) -> None:
+    def assertSessionNotEmpty(self, request, msg: str = None) -> None:
         """Assert that request.session contains at least one key value pair."""
 
         if msg is None:

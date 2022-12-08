@@ -30,7 +30,7 @@ class EmailTestMixin(StringToHTMLParserMixin):
         return sent_message
 
     def assertSentMailSubjectEquals(
-        self, sent_message: EmailMessage, subject: str, msg: str | None = None
+        self, sent_message: EmailMessage, subject: str, msg: str = None
     ) -> None:
         """Assert that sent_mesage.subject stripped is equal to subject string."""
 
@@ -40,7 +40,7 @@ class EmailTestMixin(StringToHTMLParserMixin):
         assert sent_message_subject == subject, msg
 
     def assertStringIsInMessageBody(
-        self, sent_message: EmailMessage, string: str, msg: str | None = None
+        self, sent_message: EmailMessage, string: str, msg: str = None
     ) -> None:
         """Assert that string is in the message body."""
         string = self.parse_to_html(string)

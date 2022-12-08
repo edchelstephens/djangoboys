@@ -7,6 +7,11 @@
       <a href="{% url 'blogs:post_detail' pk=post.pk %}">{{ post.title }}</a>
     </h2>
     <p class="post-text">{{ post.text | linebreaksbr }}</p>
+    {% if user != post.author %}
+      <span class="fa fa-user-edit"></span> <span>author: {{ post.author }}</span>
+      <br/>
+      <br/>
+    {% endif %}
     <a href="{% url 'blogs:post_detail' pk=post.pk %}"> Comments: {{ post.comments.count }} </a>
   </article>
   {% endfor %}

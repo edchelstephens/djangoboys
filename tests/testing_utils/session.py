@@ -10,7 +10,7 @@ class SessionTestMixin:
         """Check if request.session is empty."""
         return len(request.session.values()) == 0
 
-    def assertSessionEmpty(self, request, msg: str | None = None) -> None:
+    def assertSessionEmpty(self, request, msg: str = None) -> None:
         """Assert that request.session does not contain any values."""
 
         if msg is None:

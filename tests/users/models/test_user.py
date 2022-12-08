@@ -1,10 +1,9 @@
-import pytest
+import pytest  # noqa
 
 from tests.testing_utils.testcases import ModelTestCase
 from tests.users.factories import UserFactory
 
 
-@pytest.mark.solo
 class UserModelTest(ModelTestCase):
     """User model test."""
 

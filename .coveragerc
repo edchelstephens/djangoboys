@@ -10,6 +10,11 @@
 # https://coverage.readthedocs.io/en/stable/branch.html#how-to-measure-branch-coverage
 branch = True
 
+include =
+    utils/*
+    users/*
+    blogs/*
+
 omit =
     *migrations*
     *tests*

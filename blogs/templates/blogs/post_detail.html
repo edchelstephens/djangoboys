@@ -6,14 +6,15 @@
           {% if  post.is_published %}
             <time class="date">{{post.published_at}}</time>
           {% else%}
-            <a class="btn btn-secondary" href="{% url 'blogs:post_publish' pk=post.pk %}">Publish</a>
+            <a class="btn btn-secondary" href="{% url 'blogs:post_publish' pk=post.pk %}">
+              <i class="fa fa-paper-plane"></i> Publish</a>
           {% endif%}
           <a class="btn btn-secondary" href="{% url 'blogs:post_edit' pk=post.pk %}">
-            <span class="fa fa-edit"></span>
+            <i class="fa fa-edit"></i>
           </a>
           {% if user == post.author %}
             <a class="btn btn-danger" href="{% url 'blogs:post_delete' pk=post.pk %}">
-              <span class="fa fa-trash"></span>
+              <i class="fa fa-trash"></i>
             </a>
           {% endif %}
 

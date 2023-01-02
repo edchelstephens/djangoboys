@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import QuerySet
+from django.db.models.query import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.views.generic import DetailView, TemplateView, View
@@ -15,9 +16,11 @@ class PostListTemplateView(TemplateView):
 
     def get_posts(self) -> QuerySet:
         """Get published posts up to this point."""
-        posts = Post.objects.filter(published_at__lte=timezone.now()).order_by(
-            "published_at"
-        )
+        filters = Q(published_at__lte=timezone.now())
+        if self.request.user.is_authenticated:
+            filters &= Q(author=self.request.user)
+
+        posts = Post.objects.filter(filters).order_by("published_at")
 
         return posts
 

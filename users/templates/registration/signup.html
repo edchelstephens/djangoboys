@@ -1,9 +1,9 @@
 {% extends "blogs/base.html"%}
     {% block content %}
         {% if form.errors %}
-            <p class="text-danger text-bold">Your username and password didn't match. Please try again.</p>
+            <p class="text-danger text-bold">Your username and password(s) combination failed. Please try again.</p>
         {% endif %}
-        <form method="post" action="{% url 'login' %}">
+        <form method="post" action="{% url 'signup' %}">
             {% csrf_token %}
 
             <div class="form-group mb-2">
@@ -11,12 +11,19 @@
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
             </div>
             <div class="form-group mb-2">
+                <label for="email">{{ form.email.label_tag }}</label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+            </div>
+            <div class="form-group mb-2">
                 <label for="password">{{ form.password.label_tag }}</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
             </div>
+            <div class="form-group mb-2">
+                <label for="password2">{{ form.password.label_tag }}</label>
+                <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password">
+            </div>
 
-            <input type="submit" value="Login" class="btn btn-secondary">
+            <input type="submit" value="Sign Up" class="btn btn-secondary">
             <input type="hidden" name="next" value="{{ next }}" />
-            <a href="{% url 'signup' %}" class="btn btn-secondary">Sign up</a>
         </form>
     {% endblock content %}

@@ -37,7 +37,9 @@ SECRET_KEY = env.str(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DJANGO_DEBUG", False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "http://django-deploysandbox-env1.eba-5ruek8ze.ap-southeast-2.elasticbeanstalk.com"
+]
 
 
 # Application definition

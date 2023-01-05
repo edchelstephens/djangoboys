@@ -7,7 +7,7 @@ version: 2
 updates:
   # Maintain dependencies for Python pip
   - package-ecosystem: "pip"
-    directory: "requirements/" # Location of pip requirements files
+    directory: "_requirements/" # Location of pip requirements files
     schedule:
       interval: "weekly"
 

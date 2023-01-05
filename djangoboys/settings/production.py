@@ -1,1 +1,3 @@
-from djangoboys.settings.base import *
+from djangoboys.settings.base import *  # noqa
+
+DEBUG = False

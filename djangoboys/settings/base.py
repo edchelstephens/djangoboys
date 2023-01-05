@@ -157,3 +157,5 @@ STATIC_ROOT = "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "/"
+
+ROOT_URLCONF = "djangoboys.urls"

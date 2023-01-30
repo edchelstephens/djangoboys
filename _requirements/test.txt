@@ -1,6 +1,6 @@
 -r ./base.txt
 
-coverage==7.0.3 # https://pypi.org/project/coverage/
+coverage==7.1.0 # https://pypi.org/project/coverage/
 
 factory-boy==3.2.1  # https://pypi.org/project/factory-boy/
 

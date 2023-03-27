@@ -5,6 +5,6 @@ django-extensions==3.2.1 # https://pypi.org/project/django-extensions/
 
 black==22.12.0 # https://pypi.org/project/black/
 
-pre-commit==2.21.0 # https://pypi.org/project/pre-commit/
+pre-commit==3.2.1 # https://pypi.org/project/pre-commit/
 
 django-browser-reload==1.6.0 # https://pypi.org/project/django-browser-reload/

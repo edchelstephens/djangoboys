@@ -16,9 +16,9 @@ from pathlib import Path
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-ENV_FILE = BASE_DIR.parent / ".env"
+ENV_FILE = BASE_DIR / ".env"
 
 env = environ.Env()
 
@@ -162,8 +162,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+
 STATIC_URL = "static/"
-STATIC_ROOT = "staticfiles"
+STATIC_ROOT = env.str("DJANGO_STATIC_ROOT", os.path.join(BASE_DIR, "static/"))
+
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = env.str("DJANGO_MEDIA_ROOT", os.path.join(BASE_DIR, "media/"))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

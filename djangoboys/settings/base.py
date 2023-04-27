@@ -35,10 +35,12 @@ SECRET_KEY = env.str(
     "MY-django-insecure-ak5-_v!m1str50bymi(0oit*7)6skas9@7np-bcgu+805glydu",
 )
 
+ENVIRONMENT = env.str("ENVIRONMENT", "production")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DJANGO_DEBUG", False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["127.0.0.1", "localhost"])
 
 
 # Application definition

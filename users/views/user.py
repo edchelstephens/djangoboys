@@ -43,7 +43,10 @@ class UserSignupView(DjangoView):
         if is_valid:
             if form.is_valid():
                 user = form.save()
+                user.set_password(data.get("password"))
+                user.save()
                 login(request, user)
+
                 return redirect("/")
         else:
             context = {"form": form, "signup_error": signup_error}

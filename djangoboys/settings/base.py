@@ -108,7 +108,7 @@ if env.bool("USES_POSTGRES_DB", False):
             "USER": env.str("DJANGO_DB_USER"),
             "PASSWORD": env.str("DJANGO_DB_PASSWORD"),
             "HOST": env.str("DJANGO_DB_HOST"),
-            "PORT": env.int("DJANGO_DB_PORT"),
+            "PORT": env.int("DJANGO_DB_PORT", ""),
         }
     }
 

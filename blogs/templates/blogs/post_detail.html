@@ -35,10 +35,14 @@
                             <a class="text-success" href="{% url 'blogs:comment_approve' pk=comment.pk %}"><i class="fa fa-check"></i> Approve</a>
                         {% endif %}
                     </div>
+                    <div class="date">{% if comment.is_approved %}<b class="text-success"><i class="fa fa-check-circle"></i></b> {% endif %} {{comment.created_at}}</div>
+                    <span class="fa fa-user-circle"></span> <span>commenter: {{ comment.author }}</span>
+                    <p>{{comment.text|linebreaks}}</p>
+                {% elif comment.is_approved %}
+                    <div class="date">{{comment.created_at}}</div>
+                    <span class="fa fa-user-circle"></span> <span>commenter: {{ comment.author }}</span>
+                    <p>{{comment.text|linebreaks}}</p>
                 {% endif %}
-                <div class="date">{{comment.created_at}}</div>
-                <span class="fa fa-user-circle"></span> <span>commenter: {{ comment.author }}</span>
-                <p>{{comment.text|linebreaks}}</p>
             </div>
 
         {% endfor %}

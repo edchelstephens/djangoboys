@@ -1,18 +1,18 @@
 {% extends "blogs/base.html" %}
 {% block content %}
-  {% for post in posts %}
-  <article class="post">
-    <time class="date">published: {{ post.published_at}}</time>
-    <h2 class="post-title">
-      <a href="{% url 'blogs:post_detail' pk=post.pk %}">{{ post.title }}</a>
-    </h2>
-    <p class="post-text">{{ post.text | linebreaksbr }}</p>
-    {% if user != post.author or not user.is_authenticated %}
-      <span class="fa fa-user-edit"></span> <span>author: {{ post.author.email }}</span>
-      <br/>
-      <br/>
-    {% endif %}
-    <a href="{% url 'blogs:post_detail' pk=post.pk %}"> Comments: {{ post.comments.count }} </a>
-  </article>
-  {% endfor %}
+    {% for post in posts %}
+        <article class="post">
+            <time class="date">published: {{ post.published_at}}</time>
+            <h2 class="post-title">
+                <a href="{% url 'blogs:post_detail' pk=post.pk %}">{{ post.title }}</a>
+            </h2>
+            <p class="post-text">{{ post.text | linebreaksbr }}</p>
+            {% if user != post.author or not user.is_authenticated %}
+                <span class="fa fa-user-edit"></span> <span>author: {{ post.author.email }}</span>
+                <br/>
+                <br/>
+            {% endif %}
+            <a href="{% url 'blogs:post_detail' pk=post.pk %}"> Comments: {{ post.approved_comments.count }} </a>
+        </article>
+    {% endfor %}
 {% endblock content %}

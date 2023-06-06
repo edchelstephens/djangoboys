@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import QuerySet
 from django.utils import timezone
 
 
@@ -31,3 +32,7 @@ class Post(models.Model):
     def is_published(self) -> bool:
         """Check if post is published by checking the published_at datetime field."""
         return self.published_at is not None
+
+    def approved_comments(self) -> QuerySet:
+        """Get queryset of approved comments."""
+        return self.comments.filter(is_approved=True)

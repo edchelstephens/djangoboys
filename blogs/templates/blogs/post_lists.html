@@ -12,7 +12,8 @@
                 <br/>
                 <br/>
             {% endif %}
-            <a href="{% url 'blogs:post_detail' pk=post.pk %}"> Comments: {{ post.approved_comments.count }} </a>
+            <a href="{% url 'blogs:post_detail' pk=post.pk %}"> Comments: {% if user == post.author %} {{ post.comments.count}} {% else %} {{ post.approved_comments.count }} {% endif %} </a>
+
         </article>
     {% endfor %}
 {% endblock content %}

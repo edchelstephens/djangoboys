@@ -28,10 +28,19 @@
     {% if post.comments.all %}
         {% for comment in post.comments.all %}
             <div class="comment">
+                {% if user == post.author  %}
+                    <div>
+                        <a class="text-danger" href="{% url 'blogs:comment_delete' pk=comment.pk %}"><i class="fa fa-trash"></i> Delete</a>
+                        {% if not comment.is_approved %}
+                            <a class="text-success" href="{% url 'blogs:comment_approve' pk=comment.pk %}"><i class="fa fa-check"></i> Approve</a>
+                        {% endif %}
+                    </div>
+                {% endif %}
                 <div class="date">{{comment.created_at}}</div>
                 <span class="fa fa-user-circle"></span> <span>commenter: {{ comment.author }}</span>
                 <p>{{comment.text|linebreaks}}</p>
             </div>
+
         {% endfor %}
     {% else %}
         <p>No comments yet</p>

@@ -29,7 +29,7 @@
         {% for comment in post.comments.all %}
             <div class="comment">
                 <div class="date">{{comment.created_at}}</div>
-                <span class="fa fa-user-edit"></span> <span>commenter: {{ comment.author }}</span>
+                <span class="fa fa-user-circle"></span> <span>commenter: {{ comment.author }}</span>
                 <p>{{comment.text|linebreaks}}</p>
             </div>
         {% endfor %}

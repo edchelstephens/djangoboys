@@ -1,39 +1,40 @@
 {% extends "blogs/base.html" %}
-  {% block content %}
+{% block content %}
     <article class="post">
-      <aside class="actions">
-        {% if user.is_authenticated %}
-          {% if  post.is_published %}
-            <time class="date">{{post.published_at}}</time>
-          {% else%}
-            <a class="btn btn-secondary" href="{% url 'blogs:post_publish' pk=post.pk %}">
-              <i class="fa fa-paper-plane"></i> Publish</a>
-          {% endif%}
-          <a class="btn btn-secondary" href="{% url 'blogs:post_edit' pk=post.pk %}">
-            <i class="fa fa-edit"></i>
-          </a>
-          {% if user == post.author %}
-            <a class="btn btn-danger" href="{% url 'blogs:post_delete' pk=post.pk %}">
-              <i class="fa fa-trash"></i>
-            </a>
-          {% endif %}
+        <aside class="actions">
+            {% if user.is_authenticated %}
+                {% if  post.is_published %}
+                    <time class="date">{{post.published_at}}</time>
+                {% else%}
+                    <a class="btn btn-secondary" href="{% url 'blogs:post_publish' pk=post.pk %}">
+                        <i class="fa fa-paper-plane"></i> Publish</a>
+                {% endif%}
+                <a class="btn btn-secondary" href="{% url 'blogs:post_edit' pk=post.pk %}">
+                    <i class="fa fa-edit"></i>
+                </a>
+                {% if user == post.author %}
+                    <a class="btn btn-danger" href="{% url 'blogs:post_delete' pk=post.pk %}">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                {% endif %}
 
-        {% endif %}
-      </aside>
-      <h2 class="post-title">{{post.title }}</h2>
-      <p class="post-text">{{post.text|linebreaksbr}}</p>
+            {% endif %}
+        </aside>
+        <h2 class="post-title">{{post.title }}</h2>
+        <p class="post-text">{{post.text|linebreaksbr}}</p>
     </article>
 
     <hr>
     {% if post.comments.all %}
-      {% for comment in post.comments.all %}
-        <div class="comment">
-            <div class="date">{{comment.created_at}}</div>
-            <strong> {{ comment.author }} </strong>
-            <p>{{comment.text|linebreaks}}</p>
-        </div>
-      {% endfor %}
+        {% for comment in post.comments.all %}
+            <div class="comment">
+                <div class="date">{{comment.created_at}}</div>
+                <strong> {{ comment.author }} </strong>
+                <p>{{comment.text|linebreaks}}</p>
+            </div>
+        {% endfor %}
     {% else %}
         <p>No comments yet</p>
     {% endif %}
-  {% endblock content %}
+    <a class="btn btn-success" href="{% url 'blogs:post_comment' pk=post.pk %}"><i class="fa fa-comment"></i> Add comment</a>
+{% endblock content %}

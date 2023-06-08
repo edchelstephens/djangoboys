@@ -1,11 +1,11 @@
 # Django Boys Tutorial from [DjangoGirls](https://tutorial.djangogirls.org/)
 
-## A `djangoboys` tutorial `with lots of extensions`!!! 🚀🚀🚀
+## A `djangoboys` tutorial `with lots of extensions`!!! 💯💯💯
 
 ![Djangoboys](assets/images/logo.png)
 
 
-# Deployment
+# Deployment 🚀🚀🚀
 
 ## Deploy on Ubuntu 22.04 with Postgres, Nginx and Gunicorn
 

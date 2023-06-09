@@ -81,3 +81,5 @@ celerybeat-schedule
 
 # VSCode
 .vscode/
+
+djangoboysenv/*

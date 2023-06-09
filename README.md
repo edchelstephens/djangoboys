@@ -9,7 +9,10 @@
 
 ## Deploy on Ubuntu 22.04 with Postgres, Nginx and Gunicorn
 
+
 1. Create server via AWS EC2 or Digital Ocean Droplet, or other similar service
+- AWS
+ https://awstip.com/how-to-deploy-django-application-on-aws-ubuntu-ec2-25a24ca439e2
 
 2. Prepare server with this setup:
 https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04
@@ -46,5 +49,10 @@ Add the www-data to the username group:
     https://pylessons.com/django-deployment
 
 10. Visit your site and verify deployment
+
+## Follow Along Video Tutorials ⏯️ ⏯️ ⏯️
+1. https://www.youtube.com/watch?v=1fjpNXK7yqc
+2. https://www.youtube.com/watch?v=7O1H9kr1CsA
+3. https://www.youtube.com/watch?v=1D4mn_rO2cM
 
 ### Made with ❤️ by @edchelstephens

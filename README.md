@@ -11,7 +11,7 @@
 
 1. Create server via AWS EC2 or Digital Ocean Droplet, or other similar service
 
-1. Prepare server with this setup:
+2. Prepare server with this setup:
 https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04
 
 3. Allow ubuntu user to have sudo privileges
@@ -42,6 +42,9 @@ Add the www-data to the username group:
 
 `sudo gpasswd -a www-data username`
 
-9. Visit your site and verify deployment
+9. Also check this tutorial in case of errors:
+    https://pylessons.com/django-deployment
+
+10. Visit your site and verify deployment
 
 ### Made with ❤️ by @edchelstephens

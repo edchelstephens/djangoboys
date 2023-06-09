@@ -30,5 +30,18 @@ https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubunt
 7. Follow tutorial:
 https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-22-04
 
+8. Check for static files access
+`sudo -u www-data stat /home/ubuntu/djangoboys/static`
+
+It it gives the error:
+`stat: cannot statx '/home/ubuntu/djangoboys/static': Permission denied`
+
+Then
+
+Add the www-data to the username group:
+
+`sudo gpasswd -a www-data username`
+
+9. Visit your site and verify deployment
 
 ### Made with ❤️ by @edchelstephens

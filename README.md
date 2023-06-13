@@ -45,10 +45,24 @@ Add the www-data to the username group:
 
 `sudo gpasswd -a www-data username`
 
-9. Also check this tutorial in case of errors:
+9. If nginx gives this error:
+`nginx: [emerg] could not build server_names_hash, you should increase server_names_hash_bucket_size: 64`
+`nginx: configuration file /etc/nginx/nginx.conf test failed`
+
+Then
+
+Edit the nginx.conf and on the http block, add this line:
+
+`http{
+      server_names_hash_bucket_size  64;
+      ...
+}`
+
+
+10. Also check this tutorial in case of errors:
     https://pylessons.com/django-deployment
 
-10. Visit your site and verify deployment
+11. Visit your site and verify deployment
 
 ## Follow Along Video Tutorials ⏯️ ⏯️ ⏯️
 1. https://www.youtube.com/watch?v=1fjpNXK7yqc

@@ -6,5 +6,5 @@ psycopg2-binary==2.9.5 # https://pypi.org/project/psycopg2-binary/
 
 pytz==2023.3 # https://pypi.org/project/pytz/
 tablib==3.3.0 # https://pypi.org/project/tablib/
-django-import-export==3.0.2 # https://pypi.org/project/django-import-export/
+django-import-export==3.2.0 # https://pypi.org/project/django-import-export/
 django-mail-templated==2.6.5 # https://pypi.org/project/django-mail-templated/
